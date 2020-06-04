@@ -12,6 +12,7 @@ pipeline{
                 // Maven build step
                 withMaven(maven: 'localMaven'){
                     sh 'mvn clean package'
+                    sh "docker build . -t tomcatwebapp:${env.BUILD_ID}"
                 }
                 
             }
